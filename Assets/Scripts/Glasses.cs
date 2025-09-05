@@ -2,8 +2,8 @@ using UnityEngine;
 
 public enum Models
 {
+    Square,
     Round,
-    Cube,
     Monocle,
     Sunglasses
 }
@@ -32,11 +32,30 @@ public class Glasses : MonoBehaviour
     [SerializeField] public Brand brand;
     [SerializeField] public GlassesColor color;
     [SerializeField] public int popularity;
+    [SerializeField] private GameObject[] models;
     [SerializeField] private Material[] materials;
     
     private void Start()
     {
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        
+        switch (model)
+        {
+            case Models.Square:
+                Instantiate(models[0], transform.position, Quaternion.Euler(0, 90, 0), gameObject.transform);
+                break;
+            case Models.Round:
+                Instantiate(models[1], transform.position, Quaternion.Euler(0, 90, 0), gameObject.transform);
+                break;
+            case Models.Monocle:
+                Instantiate(models[2], transform.position, Quaternion.Euler(0, 90, 0), gameObject.transform);
+                break;
+            case Models.Sunglasses:
+                Instantiate(models[3], transform.position, Quaternion.Euler(180, 90, 0), gameObject.transform);
+                break;
+
+        }
+
+        MeshRenderer meshRenderer = GetComponentInChildren<MeshRenderer>();
         switch (color)
         {
             case GlassesColor.Red:
@@ -56,6 +75,8 @@ public class Glasses : MonoBehaviour
                 break;
 
         }
+
+        
     }
 
 }
