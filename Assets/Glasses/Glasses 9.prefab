@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e4ef0555a739b418b570cad2d0c7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glassesName: RedSun
   cost: 44
-  model: 1
+  model: 3
   brand: 1
-  color: 1
+  color: 0
   popularity: 2
   models:
   - {fileID: 919132149155446097, guid: c75947b4a7c29fc4ea24137ef6b5d28c, type: 3}

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e4ef0555a739b418b570cad2d0c7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glassesName: Acsually
   cost: 99
   model: 0
   brand: 3

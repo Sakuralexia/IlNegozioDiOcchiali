@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum OrderType
@@ -68,14 +69,80 @@ public class ShelveManager : MonoBehaviour
                 SortGlassesByBrand();
                 break;
             case OrderType.Model:
-
+                SortGlassesByModel();
                 break;
             case OrderType.Color:
-
+                SortGlassesByColor();
                 break;
             case OrderType.Popularity:
-
+                SortGlassesByPopularity();
                 break;
+        }
+    }
+
+    public void SortGlassesByColor()
+    {
+        int rows = InstantiatedGlasses.GetLength(1);
+        int cols = InstantiatedGlasses.GetLength(0);
+        int total = rows * cols;
+
+        GameObject[] flatArray = new GameObject[total];
+        int index = 0;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                flatArray[index++] = InstantiatedGlasses[j, i];
+            }
+        }
+
+        System.Array.Sort(flatArray, (a, b) =>
+        {
+            var brandA = a.GetComponent<Glasses>().color;
+            var brandB = b.GetComponent<Glasses>().color;
+            return brandA.CompareTo(brandB);
+        });
+        index = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                InstantiatedGlasses[j, i] = flatArray[index++];
+            }
+        }
+    }
+
+    public void SortGlassesByModel()
+    {
+        int rows = InstantiatedGlasses.GetLength(1);
+        int cols = InstantiatedGlasses.GetLength(0);
+        int total = rows * cols;
+
+        GameObject[] flatArray = new GameObject[total];
+        int index = 0;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                flatArray[index++] = InstantiatedGlasses[j, i];
+            }
+        }
+
+        System.Array.Sort(flatArray, (a, b) =>
+        {
+            var brandA = a.GetComponent<Glasses>().model;
+            var brandB = b.GetComponent<Glasses>().model;
+            return brandA.CompareTo(brandB);
+        });
+        index = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                InstantiatedGlasses[j, i] = flatArray[index++];
+            }
         }
     }
 
@@ -132,6 +199,37 @@ public class ShelveManager : MonoBehaviour
             float costA = a.GetComponent<Glasses>().cost;
             float costB = b.GetComponent<Glasses>().cost;
             return costA.CompareTo(costB); 
+        });
+        index = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                InstantiatedGlasses[j, i] = flatArray[index++];
+            }
+        }
+    }
+
+    public void SortGlassesByPopularity()
+    {
+        int rows = InstantiatedGlasses.GetLength(1);
+        int cols = InstantiatedGlasses.GetLength(0);
+        int total = rows * cols;
+
+        GameObject[] flatArray = new GameObject[total];
+        int index = 0;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                flatArray[index++] = InstantiatedGlasses[j, i];
+            }
+        }
+        System.Array.Sort(flatArray, (a, b) =>
+        {
+            float costA = a.GetComponent<Glasses>().popularity;
+            float costB = b.GetComponent<Glasses>().popularity;
+            return costA.CompareTo(costB);
         });
         index = 0;
         for (int i = 0; i < rows; i++)

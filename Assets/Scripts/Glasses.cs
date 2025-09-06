@@ -27,6 +27,7 @@ public enum GlassesColor
 
 public class Glasses : MonoBehaviour
 {
+    [SerializeField] public string glassesName;
     [SerializeField] public float cost;
     [SerializeField] public Models model;
     [SerializeField] public Brand brand;
@@ -47,10 +48,10 @@ public class Glasses : MonoBehaviour
                 Instantiate(models[1], transform.position, Quaternion.Euler(0, 90, 0), gameObject.transform);
                 break;
             case Models.Monocle:
-                Instantiate(models[2], transform.position, Quaternion.Euler(0, 90, 0), gameObject.transform);
+                Instantiate(models[2], transform.position + new Vector3(0.15f* transform.localScale.x, 0, 0), Quaternion.Euler(0, 90, 0), gameObject.transform);
                 break;
             case Models.Sunglasses:
-                Instantiate(models[3], transform.position, Quaternion.Euler(180, 90, 0), gameObject.transform);
+                Instantiate(models[3], transform.position + new Vector3(0,0,-0.2f * transform.localScale.z), Quaternion.Euler(180, 90, 0), gameObject.transform);
                 break;
 
         }
