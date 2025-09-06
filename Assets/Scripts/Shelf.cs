@@ -63,4 +63,9 @@ public class Shelf : MonoBehaviour
         ChosenGlasses.cost = glassesInfo.cost;
         SceneManager.LoadScene("TryOnGlasses");
     }
+
+    public void AddToCart()
+    {
+        ChosenGlasses.glassesInCart.Add(glassesInfo);
+    }
 }

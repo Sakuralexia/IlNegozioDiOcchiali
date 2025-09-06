@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChosenGlasses : MonoBehaviour
@@ -8,4 +10,6 @@ public class ChosenGlasses : MonoBehaviour
     public static Brand brand;
     public static GlassesColor color;
     public static int popularity;
+
+    public static List<Glasses> glassesInCart = new List<Glasses>();
 }
